@@ -11,6 +11,9 @@ PHONE = os.getenv('PHONE_NUMBER')
 
 client = TelegramClient('user_session', API_ID, API_HASH)
 
+KEYWORDS = ['python', 'стажёр', 'стажер', 'qa', 'тестировщик', 'junior']  # что ищем
+EXCLUDE = ['senior QA', 'lead', 'тимлид', 'manager']  # что исключаем
+
 async def main():
     await client.connect()  # Подключаемся к серверу
     if not await client.is_user_authorized():
@@ -20,7 +23,7 @@ async def main():
     print('✅ Авторизация успешна!')
     
     # Тестовый канал (можно заменить на ваш)
-    channel_username = 'travelnews'
+    channel_username = 'automatedqa'
     channel = await client.get_entity(channel_username)
     print(f'📢 Читаем последние 3 сообщения из канала {channel.title}')
     
